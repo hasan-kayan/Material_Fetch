@@ -1,19 +1,27 @@
-# Import 
-from functions.fetch_data import *
-from functions.open_zip import *
+import os
+from functions.fetch_data import fetch_data
+from functions.open_zip import extract_and_delete_zips
 
-
-def __main__():
+def main():
+    print("Hello")
+    y_n = input("Do you have any specific directory for storage? (Y/N): ")
     
-    # Define the folder path
-    folder_path = "your_folder_path_here"  # Replace with the path to your specific folder
+    if y_n.upper() == "Y":
+        folder_path = input("Please Enter The Path: ")
+    else:
+        print("Data Folder Created")
+        folder_path = 'Data'  # Default folder name if not provided
+        os.makedirs(folder_path, exist_ok=True)  # Create a Data folder if it doesn't exist
 
-    # Extract the zip files
-    extract_and_delete_zips(folder_path)
-
-    # Define the CSV file path
-    csv_file_path = "csv_file_path_here"  # Replace with the path to your specific folder
+    csv_file_path = input("Please Enter The CSV File Path: ")
+    
+    
 
     # Fetch the data
     fetch_data(csv_file_path)
+    
+    # Extract the zip files
+    extract_and_delete_zips(folder_path)
 
+if __name__ == "__main__":
+    main()

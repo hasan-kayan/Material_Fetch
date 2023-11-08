@@ -3,8 +3,6 @@ import requests
 import os
 
 def fetch_data(csv_file_path):
-    # Create a Data folder to keep files in it 
-    os.makedirs('Data')
 
 # Open the CSV file
     with open(csv_file_path, 'r') as csvfile:
@@ -30,6 +28,3 @@ def fetch_data(csv_file_path):
 
                 print(f'Downloaded {filename}')
 
-if __name__ == "__main__":
-    csv_file_path = "csv_file_path_here"  # Replace with the path to your specific folder
-    fetch_data(csv_file_path)

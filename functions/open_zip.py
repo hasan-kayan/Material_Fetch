@@ -25,7 +25,3 @@ def extract_and_delete_zips(folder_path):
             # Remove the zip file
             os.remove(file_path)
             print(f"{file} has been extracted and deleted.")
-
-if __name__ == "__main__":
-    folder_path = "your_folder_path_here"  # Replace with the path to your specific folder
-    extract_and_delete_zips(folder_path)
