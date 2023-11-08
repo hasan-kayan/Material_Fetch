@@ -1,34 +1,19 @@
-import csv
-import requests
-import os
 # Import 
 from functions.fetch_data import *
 from functions.open_zip import *
 
 
-# Create a Data folder if it doesn't exist
-if not os.path.exists('Data'):
-    os.makedirs('Data')
+def __main__():
+    
+    # Define the folder path
+    folder_path = "your_folder_path_here"  # Replace with the path to your specific folder
 
-# Open the CSV file
-with open('ambientCG_downloads_csv.csv', 'r') as csvfile:
-    reader = csv.DictReader(csvfile)
+    # Extract the zip files
+    extract_and_delete_zips(folder_path)
 
-    # Loop through each row in the CSV file
-    for row in reader:
-        # Extract the assetId, rawLink, and filetype    
-        assetId = row['assetId']
-        rawLink = row['rawLink']
-        filetype = row['filetype']
+    # Define the CSV file path
+    csv_file_path = "csv_file_path_here"  # Replace with the path to your specific folder
 
-        # Download the file
-        filename = f'{assetId}_{filetype}.{filetype}'
-        filepath = os.path.join('Data', filename)
+    # Fetch the data
+    fetch_data(csv_file_path)
 
-        if not os.path.exists(filepath):
-            response = requests.get(rawLink)
-
-            with open(filepath, 'wb') as f:
-                f.write(response.content)
-
-            print(f'Downloaded {filename}')
