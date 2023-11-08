@@ -1,8 +1,11 @@
 # ambientcg.com Data Fetch 
 
+![Alt Text](https://github.com/hasan-kayan/Material_Fetch/blob/main/asset/ambientcg-full-color.gif)
+
+
 For 3D environments there is a full open-source material and texture library that allows users to have free texture and material indormation. This un-complicated script fetches the data form these website, extract files and makes them ready to use. 
 
-The csv file is taken directly from URL: ambientcg.com
+The csv file is taken directly from URL: https://ambientcg.com/
 Thanks for his increadible work to URL:https://instagram.com/struffelproductions/
 
 ## How To Use 
