@@ -1,6 +1,10 @@
 import csv
 import requests
 import os
+# Import 
+from functions.fetch_data import *
+from functions.open_zip import *
+
 
 # Create a Data folder if it doesn't exist
 if not os.path.exists('Data'):
