@@ -16,7 +16,7 @@ def main():
     csv_file_path = "./ambientCG_downloads_csv.csv"
 
     # Fetch the data
-    fetch_data(csv_file_path)
+    fetch_data(csv_file_path, folder_path)
     
 
 if __name__ == "__main__":

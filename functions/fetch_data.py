@@ -8,8 +8,8 @@ def total_rows(csv_file_path):
         reader = csv.DictReader(csvfile)
         return sum(1 for _ in reader)
 
-def fetch_data(csv_file_path):
-# Open the CSV file
+def fetch_data(csv_file_path, save_path):
+    # Open the CSV file
     total = total_rows(csv_file_path)
     
     with open(csv_file_path, 'r') as csvfile:
@@ -27,7 +27,7 @@ def fetch_data(csv_file_path):
             # Download the file
             # Extract the filename from the rawLink
             filename = rawLink.split('/')[-1]
-            filepath = os.path.join('Data', filename)
+            filepath = os.path.join(save_path, filename)
 
             if not os.path.exists(filepath):
                 try:
@@ -35,8 +35,5 @@ def fetch_data(csv_file_path):
 
                     with open(filepath, 'wb') as f:
                         f.write(response.content)
-
-                    print(f'Downloaded {filename}')
                 except Exception as e:
-                    print(f'Download {filename} has failed. With the following exception: {e}')
-
+                    print(f"Failed to download {rawLink}. Reason: {e}")
