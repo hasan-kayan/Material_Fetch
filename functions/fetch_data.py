@@ -19,9 +19,9 @@ def fetch_data(csv_file_path, save_path):
         # Loop through each row in the CSV file
         for row in tqdm(reader, desc='Downloading', total=total):
             # Extract the assetId, rawLink, and filetype    
-            downloadAttribute = row['downloadAttribute']
-            if '8K-PNG' != downloadAttribute:
-                continue
+            # downloadAttribute = row['downloadAttribute']
+            # if not ('8K' in downloadAttribute):
+            #     continue
             rawLink = row['rawLink']
 
             # Download the file
