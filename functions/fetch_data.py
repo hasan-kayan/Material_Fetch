@@ -37,6 +37,6 @@ def fetch_data(csv_file_path):
                         f.write(response.content)
 
                     print(f'Downloaded {filename}')
-                except:
-                    print(f'Download {filename} has failed.')
+                except Exception as e:
+                    print(f'Download {filename} has failed. With the following exception: {e}')
 
