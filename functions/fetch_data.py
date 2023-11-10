@@ -21,10 +21,13 @@ def fetch_data(csv_file_path):
             filepath = os.path.join('Data', filename)
 
             if not os.path.exists(filepath):
-                response = requests.get(rawLink)
+                try:
+                    response = requests.get(rawLink)
 
-                with open(filepath, 'wb') as f:
-                    f.write(response.content)
+                    with open(filepath, 'wb') as f:
+                        f.write(response.content)
 
-                print(f'Downloaded {filename}')
+                    print(f'Downloaded {filename}')
+                except:
+                    print(f'Download {filename} has failed.')
 
