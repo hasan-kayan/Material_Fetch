@@ -13,15 +13,11 @@ def main():
         folder_path = 'Data'  # Default folder name if not provided
         os.makedirs(folder_path, exist_ok=True)  # Create a Data folder if it doesn't exist
 
-    csv_file_path = input("Please Enter The CSV File Path: ")
-    
-    
+    csv_file_path = "./ambientCG_downloads_csv.csv"
 
     # Fetch the data
     fetch_data(csv_file_path)
     
-    # Extract the zip files
-    extract_and_delete_zips(folder_path)
 
 if __name__ == "__main__":
     main()

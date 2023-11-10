@@ -1,30 +1,42 @@
 import csv
 import requests
 import os
+from tqdm.auto import tqdm
+
+def total_rows(csv_file_path):
+    with open(csv_file_path, 'r') as csvfile:
+        reader = csv.DictReader(csvfile)
+    return sum(1 for _ in reader)
 
 def fetch_data(csv_file_path):
-
 # Open the CSV file
+    total = total_rows(csv_file_path)
+    
     with open(csv_file_path, 'r') as csvfile:
         
         reader = csv.DictReader(csvfile)
 
         # Loop through each row in the CSV file
-        for row in reader:
+        for row in tqdm(reader, desc='Downloading', total=total):
             # Extract the assetId, rawLink, and filetype    
-            assetId = row['assetId']
+            downloadAttribute = row['downloadAttribute']
+            if '8K-PNG' != downloadAttribute:
+                continue
             rawLink = row['rawLink']
-            filetype = row['filetype']
 
             # Download the file
-            filename = f'{assetId}_{filetype}.{filetype}'
+            # Extract the filename from the rawLink
+            filename = rawLink.split('/')[-1]
             filepath = os.path.join('Data', filename)
 
             if not os.path.exists(filepath):
-                response = requests.get(rawLink)
+                try:
+                    response = requests.get(rawLink)
 
-                with open(filepath, 'wb') as f:
-                    f.write(response.content)
+                    with open(filepath, 'wb') as f:
+                        f.write(response.content)
 
-                print(f'Downloaded {filename}')
+                    print(f'Downloaded {filename}')
+                except:
+                    print(f'Download {filename} has failed.')
 
