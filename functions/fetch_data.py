@@ -6,7 +6,7 @@ from tqdm.auto import tqdm
 def total_rows(csv_file_path):
     with open(csv_file_path, 'r') as csvfile:
         reader = csv.DictReader(csvfile)
-    return sum(1 for _ in reader)
+        return sum(1 for _ in reader)
 
 def fetch_data(csv_file_path):
 # Open the CSV file
