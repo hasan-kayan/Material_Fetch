@@ -10,12 +10,14 @@ def total_rows(csv_file_path):
 
 def fetch_data(csv_file_path):
 # Open the CSV file
+    total = total_rows(csv_file_path)
+    
     with open(csv_file_path, 'r') as csvfile:
         
         reader = csv.DictReader(csvfile)
 
         # Loop through each row in the CSV file
-        for row in tqdm(reader, desc='Downloading', total=total_rows(csv_file_path)):
+        for row in tqdm(reader, desc='Downloading', total=total):
             # Extract the assetId, rawLink, and filetype    
             downloadAttribute = row['downloadAttribute']
             if '8K-PNG' != downloadAttribute:

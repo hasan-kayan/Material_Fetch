@@ -1,5 +1,2 @@
-zipfile
-os
-csv
 requests
 tqdm
